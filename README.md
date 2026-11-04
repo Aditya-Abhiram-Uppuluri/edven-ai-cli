@@ -18,7 +18,7 @@ edven-ai provides a single CLI application with three specialized AI agents:
 |---|---|---|
 | **General Agent** | General-purpose AI assistance and internal company knowledge retrieval | All authenticated employees, subject to document permissions |
 | **Coding Agent** | GitHub repository intelligence, code assistance, PR reviews, and development workflows | Authorized engineering personnel |
-| **eMPortal Agent** | Workforce intelligence, employee profiles, timesheets, attendance, and skills matching | Authorized management, read-only |
+| **EmPortal Agent** | Workforce intelligence, employee profiles, timesheets, attendance, and skills matching | Authorized management, read-only |
 
 Employees will be able to switch agents and supported LLMs within the same terminal session.
 
@@ -52,7 +52,7 @@ Retrieval-Augmented Generation (RAG) for searching internal documentation, compa
 
 ### Workforce Intelligence
 
-Integration with eMPortal to provide management with authorized, read-only access to workforce information, including employee availability, attendance, timesheets, skills, and staffing insights.
+Integration with EmPortal to provide management with authorized, read-only access to workforce information, including employee availability, attendance, timesheets, skills, and staffing insights.
 
 ### Cross-Platform CLI
 
@@ -80,7 +80,7 @@ Active Model: Claude Sonnet
 Select an agent:
   General Agent (Default)
   Coding Agent
-  eMPortal Agent (Management only)
+  EmPortal Agent (Management only)
 
 > /model
 
@@ -135,7 +135,7 @@ edven-ai follows a **thin-client, centralized-backend architecture**.
                      |
        +-------------+-------------+
        |             |             |
-   General        Coding       eMPortal
+   General        Coding       EmPortal
     Agent          Agent         Agent
        |             |             |
   Internal Docs    GitHub      Workforce APIs
@@ -165,7 +165,7 @@ Planned technologies:
 | LLM Providers | Anthropic / OpenAI |
 | Database | PostgreSQL |
 | Vector Search | pgvector |
-| Integrations | GitHub API, Microsoft Graph, eMPortal APIs |
+| Integrations | GitHub API, Microsoft Graph, EmPortal APIs |
 | Deployment | Docker / centralized hosting |
 
 Technology choices may evolve during implementation.
@@ -180,7 +180,7 @@ Security is a foundational part of the architecture.
 - Backend-enforced authorization
 - Least-privilege tool access
 - Role-based and resource-level permissions
-- Read-only eMPortal access during initial development
+- Read-only EmPortal access during initial development
 - Explicit confirmation for GitHub write operations
 - Secure management of API keys and credentials
 - Tenant and customer data isolation
@@ -196,7 +196,7 @@ The CLI will not store production integration credentials or independently autho
 - [ ] **Phase 1 — Foundation:** CLI, backend, authentication, authorization, agent registry, and model router
 - [ ] **Phase 2 — General Agent:** LLM integration, document ingestion, search, and RAG
 - [ ] **Phase 3 — Coding Agent:** GitHub integration, repository analysis, PR workflows, and controlled write operations
-- [ ] **Phase 4 — eMPortal Agent:** Read-only workforce queries with management-specific access controls
+- [ ] **Phase 4 — EmPortal Agent:** Read-only workforce queries with management-specific access controls
 - [ ] **Phase 5 — Deployment:** Cross-platform packaging, centralized hosting, security hardening, and employee rollout
 
 ## Getting Started
