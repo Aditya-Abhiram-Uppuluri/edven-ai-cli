@@ -1,0 +1,18 @@
+{
+  "name": "@edven-ai/backend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "start": "node dist/main.js"
+  },
+  "devDependencies": {
+    "@edven-ai/protocol": "^0.1.0"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.4.0",
+    "fastify": "^5.12.8",
+    "openai": "^7.50.0"
+  }
+}

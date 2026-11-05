@@ -1,0 +1,23 @@
+{
+  "name": "edven-ai-workspace",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "backend": "node --watch --env-file-if-exists=.env packages/backend/src/main.ts",
+    "cli": "node --env-file-if-exists=.env packages/cli/src/main.ts",
+    "typecheck": "tsc -p tsconfig.json",
+    "build": "npm run build --workspaces --if-present",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.0"
+  }
+}

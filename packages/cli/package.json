@@ -1,0 +1,19 @@
+{
+  "name": "edven-ai",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Edvenswa's internal AI assistant, in your terminal.",
+  "type": "module",
+  "bin": {
+    "edven-ai": "dist/main.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json"
+  },
+  "devDependencies": {
+    "@edven-ai/protocol": "^0.1.0"
+  }
+}

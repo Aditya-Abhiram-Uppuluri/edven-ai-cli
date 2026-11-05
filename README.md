@@ -138,7 +138,7 @@ edven-ai follows a **thin-client, centralized-backend architecture**.
    General        Coding       EmPortal
     Agent          Agent         Agent
        |             |             |
-  Internal Docs    GitHub      Workforce APIs
+  Internal Docs    GitHub      EmPortal DB
        |             |             |
        +-------------+-------------+
                      |
@@ -158,14 +158,14 @@ Planned technologies:
 | Layer | Technology |
 |---|---|
 | Language | TypeScript |
-| Runtime | Node.js |
-| CLI | Interactive terminal framework |
-| Backend | Node.js / Fastify |
+| Runtime | Node.js 24+ (npm workspaces) |
+| CLI | Node built-ins (`readline`), no runtime dependencies |
+| Backend | Fastify |
 | Authentication | Microsoft Entra ID |
 | LLM Providers | Anthropic / OpenAI |
 | Database | PostgreSQL |
 | Vector Search | pgvector |
-| Integrations | GitHub API, Microsoft Graph, EmPortal APIs |
+| Integrations | GitHub API, Microsoft Graph, EmPortal database (read-only) |
 | Deployment | Docker / centralized hosting |
 
 Technology choices may evolve during implementation.
@@ -201,9 +201,35 @@ The CLI will not store production integration credentials or independently autho
 
 ## Getting Started
 
-The project is currently under development.
+The CLI foundation runs locally with a fake dev identity. Microsoft sign-in, company documents, and the Coding and EmPortal agents aren't built yet. Their commands and agents appear in the CLI and report that they aren't available.
 
-Installation instructions, local development commands, environment configuration, and deployment documentation will be added as the foundational implementation is completed.
+Requires Node.js 24 or later.
+
+```bash
+npm install
+cp .env.example .env    # add ANTHROPIC_API_KEY and/or OPENAI_API_KEY for real models
+
+npm run backend         # terminal 1
+npm run cli             # terminal 2
+```
+
+Without API keys, the CLI offers a `Mock` model that echoes your message, so everything except real model replies works.
+
+| Command | Purpose |
+|---|---|
+| `npm test` | Run all tests |
+| `npm run typecheck` | Type-check all packages |
+| `npm run build` | Compile to `packages/*/dist` |
+
+### Code layout
+
+| Path | Contents |
+|---|---|
+| `packages/cli` | The `edven-ai` terminal client. Slash commands live in `src/commands.ts` |
+| `packages/backend` | Fastify API. Sign-in is in `src/auth.ts`, agents and their required roles in `src/agents.ts`, the model allowlist in `src/models.ts` |
+| `packages/protocol` | Types shared by the CLI and backend |
+
+The backend refuses to start unless `EDVEN_ENV=dev` and bound to localhost, until real authentication exists.
 
 ## Project Philosophy
 
